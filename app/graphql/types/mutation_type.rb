@@ -12,6 +12,7 @@ module Types
 
     # Mutations for swiping app
     field :create_swipe, mutation: Mutations::CreateSwipe
+    field :swipe_user, mutation: Mutations::SwipeUser
     field :upload_photo, mutation: Mutations::UploadPhoto
 
     # Mutations for user authentication

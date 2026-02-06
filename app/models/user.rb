@@ -11,7 +11,7 @@ class User < ApplicationRecord
   ROLES = %w[user admin]
 
   validates :first_name, :last_name, :email, :birthdate,
-            :gender, :gender_interest, :country, :city, presence: true
+            :gender, :gender_interest, :country, :province, :city, presence: true
 
   validates :email, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :role, inclusion: { in: ROLES }
@@ -63,9 +63,8 @@ class User < ApplicationRecord
 
   def mobile_number_valid
     return if mobile.blank?
-    digits = mobile.gsub(/\D/, '')
-    unless digits.length.between?(10, 15)
-      errors.add(:mobile, "must have 10-15 digits")
+    unless mobile.match?(/^(09|\+639)\d{9}$/)
+      errors.add(:mobile, "must be a valid Philippine mobile number (e.g., 09171234567 or +639171234567)")
     end
   end
 

@@ -1,35 +1,49 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  first_name: MyString
-  last_name: MyString
-  email: MyString
-  mobile: MyString
-  birthdate: 2026-01-02
-  gender: MyString
-  sexual_orientation: MyString
-  gender_interest: MyString
-  country: MyString
-  state: MyString
-  city: MyString
-  school: MyString
-  bio: MyText
-  role: MyString
-  password_digest: MyString
+admin:
+  first_name: Admin
+  last_name: User
+  email: admin@matchpoint.com
+  mobile: "09170000000"
+  birthdate: 1990-01-01
+  gender: Other
+  sexual_orientation: Other
+  gender_interest: Both
+  country: Philippines
+  province: Metro Manila
+  city: Makati
+  bio: Administrator account
+  role: admin
+  password_digest: <%= BCrypt::Password.create('password123') %>
 
-two:
-  first_name: MyString
-  last_name: MyString
-  email: MyString
-  mobile: MyString
-  birthdate: 2026-01-02
-  gender: MyString
-  sexual_orientation: MyString
-  gender_interest: MyString
-  country: MyString
-  state: MyString
-  city: MyString
-  school: MyString
-  bio: MyText
-  role: MyString
-  password_digest: MyString
+nico:
+  first_name: Nico
+  last_name: Santos
+  email: nico@matchpoint.com
+  mobile: "09171234567"
+  birthdate: 1998-05-15
+  gender: Male
+  sexual_orientation: Straight
+  gender_interest: Female
+  country: Philippines
+  province: Metro Manila
+  city: Taguig
+  bio: Looking for meaningful connections.
+  role: user
+  password_digest: <%= BCrypt::Password.create('password123') %>
+
+louise:
+  first_name: Louise
+  last_name: Reyes
+  email: louise@matchpoint.com
+  mobile: "09181234567"
+  birthdate: 1999-08-20
+  gender: Female
+  sexual_orientation: Straight
+  gender_interest: Male
+  country: Philippines
+  province: Cebu
+  city: Cebu City
+  bio: Exploring new connections.
+  role: user
+  password_digest: <%= BCrypt::Password.create('password123') %>

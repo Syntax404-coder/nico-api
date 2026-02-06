@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class RailsApiBoilerplateSchema < GraphQL::Schema
+class MatchpointApiSchema < GraphQL::Schema
   mutation(Types::MutationType)
   query(Types::QueryType)
 

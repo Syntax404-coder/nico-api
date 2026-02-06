@@ -14,7 +14,7 @@ class GraphqlController < ApplicationController
       # used by graphql to identify current user making the request
       current_user: current_user
     }
-    result = RailsApiBoilerplateSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
+    result = MatchpointApiSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
     render json: result
     rescue StandardError => e
       raise e unless Rails.env.development?

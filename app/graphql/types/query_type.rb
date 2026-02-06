@@ -54,6 +54,37 @@ module Types
       query.limit(limit).order("RANDOM()")
     end
 
+    # Potential matches query - returns users based on preferences
+    # Excludes already swiped users, filters by gender_interest
+    field :potential_matches, [Types::UserType], null: false do
+      description "Get potential matches based on user preferences"
+      argument :limit, Integer, required: false, default_value: 20
+    end
+    def potential_matches(limit:)
+      user = context[:current_user]
+      return [] unless user
+
+      # Users already swiped on
+      swiped_ids = user.swipes_made.pluck(:swiped_id)
+
+      # Filter by gender interest
+      query = User.where.not(id: [user.id] + swiped_ids)
+
+      case user.gender_interest
+      when 'Male'
+        query = query.where(gender: 'Male')
+      when 'Female'
+        query = query.where(gender: 'Female')
+      when 'Both'
+        # No additional filter
+      end
+
+      # Also check if they match MY criteria
+      query = query.where("gender_interest = ? OR gender_interest = ?", user.gender, 'Both')
+
+      query.limit(limit).order("RANDOM()")
+    end
+
 
     # current user query
     field :current_user, Types::UserType, null: true

@@ -1,6 +1,8 @@
-# Rails GraphQL API Boilerplate
+# Matchpoint API
 
-## Make sure to have the following installed:
+A Ruby on Rails GraphQL API for a dating/matching application.
+
+## Requirements
 
 - Ruby 3.4.1 (Download "Ruby+Devkit 3.4.1-1 (x64)" from [rubyinstaller.org](https://rubyinstaller.org/downloads/))
 - Rails
@@ -15,17 +17,27 @@ rails -v
 psql --version
 ```
 
-### Rails GraphQL API Setup
+## Setup
 
 ```sh
-cd nico-api
+cd matchpoint-api
 bundle install
 rails db:create db:migrate db:seed
 rails server
 ```
 
-The Rails GraphQL API will be available at:
+The GraphQL API will be available at:
 
 ```sh
 http://localhost:3000/graphql
 ```
+
+## Design Rules
+
+- **Colors**: Solid colors only (no gradients)
+  - Primary: #3B82F6 (Blue)
+  - Success: #22C55E (Green)
+  - Danger: #EF4444 (Red)
+  - Neutral: #F3F4F6 / #FFFFFF
+- **Location**: Province and City (Philippines)
+- **No emojis** in UI, comments, or seeds

@@ -15,8 +15,16 @@ module Types
     field :gender, String
     field :gender_interest, String
     field :country, String
+    field :province, String
     field :city, String
     field :bio, String
+
+    # Calculated age field
+    field :age, Integer, null: true
+
+    def age
+      object.age
+    end
 
     # Associated photos
     field :photos, [Types::PhotoType], null: true
