@@ -18,5 +18,6 @@ module Types
     # Mutations for user authentication
     field :login_user, mutation: Mutations::LoginUser
     field :register_user, mutation: Mutations::RegisterUser
+    field :update_profile, mutation: Mutations::UpdateProfile
   end
 end
