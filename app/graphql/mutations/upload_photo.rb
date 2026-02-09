@@ -26,7 +26,11 @@ module Mutations
 
       # Attach file directly (handled by scalar)
       begin
-        photo.image.attach(image)
+        photo.image.attach(
+          io: image.to_io,
+          filename: image.original_filename,
+          content_type: image.content_type
+        )
 
         if photo.save
           { photo: photo, errors: [] }
