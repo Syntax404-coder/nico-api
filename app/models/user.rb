@@ -57,12 +57,16 @@ class User < ApplicationRecord
   # PHOTO SCOPES
   # Validates that the Male user is at least 18 years old
   def must_be_18_or_older_for_male
-    errors.add(:birthdate, 'must be 18 or older') if age && age < 18 && gender == 'male'
+    if age && age < 18 && gender.to_s.downcase == 'male'
+      errors.add(:birthdate, 'must be 18 or older')
+    end
   end
 
   # Validates that the Female user is at least 21 years old
   def must_be_21_or_older_for_female
-    errors.add(:birthdate, 'must be 21 or older') if age && age < 21 && gender == 'female'
+    if age && age < 21 && gender.to_s.downcase == 'female'
+      errors.add(:birthdate, 'must be 21 or older')
+    end
   end
 
   # user creates with role 'user' by default
